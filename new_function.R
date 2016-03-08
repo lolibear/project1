@@ -9,7 +9,7 @@ temp.list <- get_data()
 vec.t <- c(40,50,60,70,80)
 vec.rh <- c(55,60,75,80, 85)
 
-mix.multi.air <- function(vet.t, vet.rh, temp.list) {
+mix.multi.air <- function(vec.t, vec.rh, temp.list) {
   
   length <- length(vec.t)
   fix.p <- 1/length
@@ -41,3 +41,11 @@ mix.multi.air <- function(vet.t, vet.rh, temp.list) {
   return(list(Temp = as.numeric(vec.t), RH = as.numeric(vec.rh)))
   
 }
+
+mix.multi.air(vec.t, vec.rh, temp.list)
+
+
+library(roxygen2)
+setwd("./psychro")
+document()
+
