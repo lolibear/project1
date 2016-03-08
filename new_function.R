@@ -1,3 +1,5 @@
+library(devtools)
+install_github("lolibear/psychro")
 library(psychro)
 ls("package:psychro")
 
@@ -14,9 +16,6 @@ mix.multi.air <- function(vet.t, vet.rh, temp.list) {
   initial.p <- fix.p
   
   while(length > 1){
-    print(length)
-    print(initial.p)
-    
     t1 <- vec.t[[1]]
     rh1 <- vec.rh[[1]]
     
@@ -30,6 +29,7 @@ mix.multi.air <- function(vet.t, vet.rh, temp.list) {
     rh.mix <- mix$RH
     
     vec.t <- vec.t[-c(1,2)]
+    vec.rh <- vec.rh[-c(1,2)]
     vec.t <- append(vec.t, t.mix, 0)
     vec.rh <- append(vec.rh, rh.mix, 0)
     
@@ -38,7 +38,6 @@ mix.multi.air <- function(vet.t, vet.rh, temp.list) {
     
   }
   
-  return(list(vet.t, vet.rh))
+  return(list(Temp = as.numeric(vec.t), RH = as.numeric(vec.rh)))
   
 }
-  
